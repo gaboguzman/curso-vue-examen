@@ -2,35 +2,35 @@
   "students" : [
     {
       "id": 1,
-      "name": "Juan",
-      "lastName": "Perez",
-      "username": "jperez",
-      "password": 111111,
-      "email": "jperez@belatrixsf.com"
-    },
-    {
-      "id": 2,
-      "name": "Gabo",
-      "lastName": "Guzman",
-      "username": "gguzman",
-      "password": 222222,
-      "email": "gguzman@belatrixsf.com"
-    },
-    {
-      "id": 3,
-      "name": "Cristian",
-      "lastName": "Quispe",
-      "username": "cquispe",
-      "password": 333333,
-      "email": "cquispe@belatrixsf.com"
-    },
-    {
-      "id": 4,
       "name": "Rigo",
       "lastName": "Paredes",
       "username": "rparedes",
-      "password": 444444,
+      "password": 111111,
       "email": "rparedesbelatrixsf.com"
+    },
+    {
+      "id": 2,
+      "name": "Peter",
+      "lastName": "Vazquez",
+      "username": "pvazquez",
+      "password": 222222,
+      "email": "pvazquez@belatrixsf.com"
+    },
+    {
+      "id": 3,
+      "name": "Elio",
+      "lastName": "Navarrete",
+      "username": "enavarrete",
+      "password": 333333,
+      "email": "enavarrete@belatrixsf.com"
+    },
+    {
+      "id": 4,
+      "name": "Gian Carlo",
+      "lastName": "Velazquez",
+      "username": "gvelazquez",
+      "password": 444444,
+      "email": "gvelazquez@belatrixsf.com"
     }
   ]
 }

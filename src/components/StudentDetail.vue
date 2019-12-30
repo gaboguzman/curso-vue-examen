@@ -50,18 +50,16 @@ export default {
     }
   },
   computed: {
-    authenticated() {
-      return this.$store.state.authenticated;
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
     }
   },
   mounted: function() {
-    console.log(this.authenticated);
     axios
       .get(
         "http://localhost:3000/students?username=" + this.$route.params.username
       )
       .then(response => {
-        console.log(response.data[0]);
         this.student = response.data[0];
       });
   }

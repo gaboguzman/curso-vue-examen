@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link
-        v-show="authenticated"
-        to="/login"
-        v-on:click.native="logout()"
-        replace
-      >
-        Logout
-      </router-link>
+    <div id="nav" class="row alert alert-success" v-show="isAuthenticated">
+      <div class="col text-left" v-show="isAuthenticated">
+        <label class="font-weight-bold">
+          Bienvenido {{ displayedLoggedUser }}
+        </label>
+      </div>
+      <div class="col text-right">
+        <router-link
+          v-show="isAuthenticated"
+          to="/login"
+          v-on:click.native="logout()"
+          replace
+        >
+          Cerrar sesión
+        </router-link>
+      </div>
     </div>
-    <router-view @authenticated="authenticated" />
+    <router-view @isAuthenticated="isAuthenticated" />
   </div>
 </template>
 <script>
@@ -19,19 +26,26 @@ export default {
     return {};
   },
   computed: {
-    authenticated() {
-      return this.$store.state.authenticated;
+    isAuthenticated() {
+      console.log("this.$store.getters.isAuthenticated: " + this.$store.getters.isAuthenticated);
+      return this.$store.getters.isAuthenticated;
+    },
+    loggedUser() {
+      return this.$store.state.loggedUser;
+    },
+    displayedLoggedUser() {
+      return this.loggedUser.name + " " + this.loggedUser.lastName;
     }
   },
   mounted() {
-    console.log("authenticated en mounted de App.vue: " + this.authenticated);
-    if (!this.authenticated) {
+    console.log("isAuthenticated: " + this.isAuthenticated);
+    if (!this.isAuthenticated) {
+      console.log("Redirect to login");
       this.$router.replace({ name: "login" });
     }
   },
   methods: {
-    setAuthenticated(status) {
-      console.log("set authenticated status: " + status);
+    setIsAuthenticated(status) {
       this.$store.dispatch("updateAuthenticationStatus", status);
     },
     logout() {
@@ -49,15 +63,9 @@ export default {
 }
 
 #nav {
-  padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
 }
 </style>

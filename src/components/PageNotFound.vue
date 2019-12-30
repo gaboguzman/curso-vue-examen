@@ -5,3 +5,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
+  mounted() {
+    console.log("page not found");
+  }
+};
+</script>

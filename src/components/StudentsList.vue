@@ -12,7 +12,11 @@
       <div class="col border bg-light">Usuario</div>
       <div class="col border bg-light">Acciones</div>
     </div>
-    <div class="row" v-for="student in studentsList" :key="student.id">
+    <div
+      v-bind:class="getStudentSpecialClass(student)"
+      v-for="student in studentsList"
+      :key="student.id"
+    >
       <div class="col border">
         {{ student.id }}
       </div>
@@ -49,15 +53,35 @@ export default {
     }
   },
   computed: {
-    authenticated() {
-      return this.$store.state.authenticated;
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+    loggedUser() {
+      return this.$store.state.loggedUser;
+    }
+  },
+  methods: {
+    getStudentSpecialClass(student) {
+      if (
+        student.name === this.loggedUser.name &&
+        student.lastName === this.loggedUser.lastName
+      ) {
+        return "row bg-info text-white";
+      } else {
+        return "row";
+      }
     }
   },
   mounted: function() {
-    console.log(this.authenticated);
     axios.get("http://localhost:3000/students").then(response => {
       this.studentsList = response.data;
     });
   }
 };
 </script>
+<style lang="scss" scoped>
+.bg-info .col a {
+  font-weight: bold;
+  color: #fff;
+}
+</style>

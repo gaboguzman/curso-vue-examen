@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/",
     redirect: {
-      name: "login"
+      name: "students"
     }
   },
   {
