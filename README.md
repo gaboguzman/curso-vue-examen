@@ -1,4 +1,4 @@
-# curso-vue-belatrix-examen
+# curso-vue-examen
 
 ## Project setup
 ```
